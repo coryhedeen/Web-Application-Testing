@@ -12,15 +12,31 @@ function foul(){
 }
 
 function hit(){
-  setBall(ball === 0);
-  setStrike(strike === 0);
+  setBall(0);
+  setStrike(0);
+}
+
+function ballCount(){
+  if(ball < 4){
+    setBall(ball + 1)
+  } else if(ball === 4){
+    setBall(0)
+  }
+}
+
+function strikeCount(){
+  if(strike < 3){
+    setStrike(strike + 1)
+  } else if(strike === 3){
+    setStrike(0);
+  }
 }
 
   return (
     <div className="dashBoard">
       <Display balls={ball} strikes={strike}/>
-        <button onClick={() => setStrike(strike + 1)}>strike</button>
-        <button onClick={() => setBall(ball + 1)}>ball</button>
+        <button onClick={() => strikeCount()}>strike</button>
+        <button onClick={() => ballCount()}>ball</button>
         <button onClick={() => foul()}>foul</button>
         <button onClick={() => hit()}>hit</button>
 
